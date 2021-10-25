@@ -4,7 +4,7 @@ import { Link ,useHistory} from "react-router-dom";
 import axios from "axios";
 
 function Signup({ className }) {
-    const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const history = useHistory();
@@ -12,7 +12,7 @@ function Signup({ className }) {
     const addUser = (event) => {
       event.preventDefault();
       axios.post('http://localhost:3001/sign-up', {
-        username: username,
+        name: name,
         password: password,
         email: email,
       }).then((response) => {
@@ -45,7 +45,7 @@ function Signup({ className }) {
                   name="name"
                   type="text"
                   id="name"
-                  onChange={(event) => setUsername(event.target.value)}
+                  onChange={(event) => setName(event.target.value)}
                   placeholder="FirstName"
                 />
               </div>

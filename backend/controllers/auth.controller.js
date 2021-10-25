@@ -1,4 +1,6 @@
 const user = require("../models/user");
+const userForm = require("../models/userForm");
+const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
 
@@ -49,6 +51,28 @@ module.exports = {
             
         } catch (error) {
 
+        }
+    },
+    signup: async (req, res, next) => {
+        try {
+            const{ name, email, password } = req.body;
+            const hashedPassword = bcrypt.hashSync(password, 12);
+            const data = { name, email, password: hashedPassword };
+    
+            const newUser = new userForm(data);
+            
+            await newUser.save(async (error, data) => {
+                if(error) {
+                    res.status(400).json("Username that other user has already exist!");
+                    console.log(error);
+                } else {
+                    res.status(200).json({ success: true, data: data });
+                    console.log(data);
+                }
+            });
+        } catch(error) {
+            console.log(error);
+            
         }
     },
 };

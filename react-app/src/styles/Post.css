@@ -4,12 +4,16 @@
     background-color: white;
     margin: 20px auto 20px auto;
     border: 1px solid lightgray;
+    background-color: lightsalmon;
 }
 .post_header{
     width: 100%;
 }
-.post_image {
+.post_boxImg {
     max-width: 100%;
+}
+.post_image {
+    width: 100%;
 }
 .post_text {
     margin: 20px 0px 20px 20px;
