@@ -1,0 +1,23 @@
+.post {
+    display: flex;
+    width: 50%;
+    background-color: white;
+    margin: 20px auto 20px auto;
+    border: 1px solid lightgray;
+}
+.post_header{
+    width: 100%;
+}
+.post_image {
+    max-width: 100%;
+}
+.post_text {
+    margin: 20px 0px 20px 20px;
+}
+.post_form {
+    display: flex;
+    margin-top: 20px;
+}
+.post_input {
+    flex: 1;
+}

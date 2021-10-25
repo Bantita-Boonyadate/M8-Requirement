@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+}
+.app_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  padding: 15px;
+}
+.app_signinBtn {
+  margin-right: 10px !important;
+}
