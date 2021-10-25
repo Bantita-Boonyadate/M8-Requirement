@@ -72,7 +72,28 @@ module.exports = {
             });
         } catch(error) {
             console.log(error);
-            
         }
     },
+    signin: async (req, res) => {
+        try {
+            //Checking if the email exists
+            const user = await userForm.findOne({ email: req.body.email });
+            if(!user) {
+                res.status(400).json("Email is not found!");
+            };
+            //Password is correct
+            const password = req.body.password;
+            const checkPassword = await bcrypt.compareSync(password, user.password);
+            if(checkPassword) {
+                //Shows user information but doesn't show password
+                const {password, ...others} = user._doc;
+                res.status(200).json({ ...others });
+            } else {
+                res.status(400).json("Incorrect password!");
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
 };
