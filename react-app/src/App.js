@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import SignIn from "./components/SignIn";
 import Navbar from "./components/Navbar";
 import SignUp from "./components/SignUp";
+import PostForm from "./components/PostForm";
+import Timeline from "./components/Timeline";
 
 function App() {
   return (
@@ -17,6 +19,14 @@ function App() {
       <Route path="/home">
         <Navbar />
         <Home />
+      </Route>
+      <Route path="/Timeline">
+        <Navbar />
+        <Timeline />
+      </Route>
+      <Route path="/post-form">
+        <Navbar />
+        <PostForm />
       </Route>
       <Route path="/sign-up">
         <SignUp />

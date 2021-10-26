@@ -1,11 +1,11 @@
 import React from "react";
 import "../styles/Home.css";
-import Post from "./Post";
+import Timeline from "./Timeline";
 
 function Home() {
   return (
     <div>
-      <Post />
+      <Timeline />
     </div>
   );
 }

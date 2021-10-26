@@ -11,13 +11,13 @@ function Signup({ className }) {
     
     const addUser = (event) => {
       event.preventDefault();
-      axios.post('http://localhost:3001/sign-up', {
+      axios.post('http://localhost:8080/auth/sign-up', {
         name: name,
         password: password,
         email: email,
       }).then((response) => {
         console.log(response);
-        //event.preventDefault()
+        
         history.push('/home')
         
       });
@@ -46,7 +46,7 @@ function Signup({ className }) {
                   type="text"
                   id="name"
                   onChange={(event) => setName(event.target.value)}
-                  placeholder="FirstName"
+                  placeholder="Name"
                 />
               </div>
   

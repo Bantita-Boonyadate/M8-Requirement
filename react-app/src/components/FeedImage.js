@@ -11,7 +11,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Comments from "./Comments";
 import { Col } from "react-bootstrap";
 
-function PostImage({ item }) {
+function FeedImage({ item }) {
   return (
     <Col className="post_body" md={12} sm={12}>
       <ListItem>
@@ -57,4 +57,4 @@ function PostImage({ item }) {
   );
 }
 
-export default PostImage;
+export default FeedImage;

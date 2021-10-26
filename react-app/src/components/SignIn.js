@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactFacebookLogin from "react-facebook-login";
 import axios from "axios";
 import styled from "styled-components";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import loginImg from "../images/img-login2.jpg";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SignIn({ className }) {
   const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const responseFacebook = async (response) => {
     const { name, email, accessToken, userID } = response;
@@ -20,10 +23,27 @@ function SignIn({ className }) {
     });
     localStorage.setItem(`token`, JSON.stringify(res.data.token));
     localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
-    history.push("/home");
-
-    
+    history.push("/home"); 
   };
+
+  const onClickSignIn = (event) => {
+    event.preventDefault();
+    axios.post("http://localhost:8080/auth/sign-in", {
+      email: email,
+      password: password
+    })
+    .then((response) => {
+      history.push('/home')
+    })
+  };
+
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/auth/sign-in").then((response) => {
+      console.log(response);
+    })
+  }, []);
+
   return (
     <>
       <div className={className}>
@@ -37,17 +57,19 @@ function SignIn({ className }) {
                   </div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Control type="email" placeholder="Enter email" />
+                      <Form.Control type="email" placeholder="Enter email" onChange={(event) => setEmail(event.target.value)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Control type="password" placeholder="Password" />
+                      <Form.Control type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" onClick={onClickSignIn}>
                       SignIn
                     </Button>
+                    <Link to="/sign-up">
                     <Button variant="primary" type="submit">
                       SignUp
                     </Button>
+                    </Link>
                     <ReactFacebookLogin
                       appId="1006115476601013"
                       fields="name,email,picture" //เอาอะไรมาจากfacebookบ้าง

@@ -1,15 +1,20 @@
 import React from "react";
 import "../styles/Navbar.css";
 import Fab from "@mui/material/Fab";
+import AddIcon from '@mui/icons-material/Add';
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 function Navbar() {
+    const history = useHistory();
+
     const logout = (event) => {
         event.preventDefault();
         localStorage.removeItem("token");
         localStorage.removeItem("name");
+        history.push("/sign-up");
     }
+
   return (
     <div className="navbar_header">
       <img
@@ -19,14 +24,14 @@ function Navbar() {
         alt="Logo"
       />
       <div>
-        <NavLink to="/sign-in">
+        <NavLink to="/post-form" className="btn-postform">
           <Fab
             variant="extended"
             size="small"
             color="primary"
             className="navbar_signinBtn"
           >
-            <LockOpenOutlinedIcon fontSize="small" /> SIGN IN
+            <AddIcon fontSize="medium" /> Post Form
           </Fab>
         </NavLink>
 
