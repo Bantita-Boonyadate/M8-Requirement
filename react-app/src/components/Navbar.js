@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const logout = () => {
-    localStorage.removeItem("tokenSignin");
+    localStorage.removeItem("token");
   };
 
   return (

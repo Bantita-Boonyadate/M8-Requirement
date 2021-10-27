@@ -1,9 +1,9 @@
-const { post, getPost, getFeed } = require("../controllers/post.controller");
+const { post, getPost } = require("../controllers/post.controller");
+const middleware = require("../middlewares/authToken");
 
 const router = require("express").Router();
 
-router.post("/post", post);
-router.get("/post", getPost);
-router.get("/feed", getFeed);
+router.post("/post",middleware, post);
+router.get("/post",middleware, getPost);
 
 module.exports = router;

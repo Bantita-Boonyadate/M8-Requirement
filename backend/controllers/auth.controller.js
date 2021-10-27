@@ -65,7 +65,8 @@ module.exports = {
           res.status(400).json("Username that other user has already exist!");
           console.log(error);
         } else {
-          res.status(200).json({ success: true, data: data });
+          const token = await newUser.generateAuthenToken();
+          res.status(200).json(token);
           console.log(data);
         }
       });
@@ -88,9 +89,9 @@ module.exports = {
         //Shows token of user information
         // const { password, ...others } = user._doc;
         const token = await user.generateAuthenToken();
+        console.log(token);
         // res.send(token);
         res.status(200).json(token);
-        
       } else {
         res.status(400).json("Incorrect password!");
       }

@@ -16,8 +16,7 @@ function Signup({ className }) {
         password: password,
         email: email,
       }).then((response) => {
-        console.log(response);
-        
+        localStorage.setItem(`token`, response.data);
         history.push('/home')
         
       });

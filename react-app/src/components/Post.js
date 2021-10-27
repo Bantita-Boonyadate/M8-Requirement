@@ -6,10 +6,13 @@ import PostFetchData from "./PostFetchData";
 
 function Post({ className }) {
   const [post, setPost] = useState([]);
+  const token = useState(localStorage.getItem(`token`))[0];
 
   useEffect(() => {
     async function getPost() {
-      const posts = await axios.get("http://localhost:8080/timeline/post");
+      const posts = await axios.get("http://localhost:8080/timeline/post", {
+        headers: { Authorization: `Bearer ${token}`}
+      });
       setPost(posts.data);
     }
     getPost();

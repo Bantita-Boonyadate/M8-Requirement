@@ -1,14 +1,39 @@
 const jwt = require("jsonwebtoken");
-const authToken = (req, res, next) => {
+const userFacebook = require("../models/user");
+const userForm = require("../models/userForm");
+const authToken = async (req, res, next) => {
     try {
+       
+        const authHeader = req.headers.authorization.split(" ")[1];
+        const user = jwt.verify(authHeader, process.env.JWTPRIVATEKEY);
+        if (user) {
+            // req.user = user;
+            // console.log(user);
+            try {
+                const checkUserFacebook = await userFacebook.findById(user._id);
+                
+                if(checkUserFacebook) {
+                    req.user = checkUserFacebook;
+                    next();
+                }
+                const checkUserForm = await userForm.findById(user._id);
+                
+                if(checkUserForm) {
+                    req.user = checkUserForm;
+                }
+               
+            } catch (error) {
+                res.status(400).json("Not found!")
+            }
+        }
+        // console.log(authHeader);
         
-        const authHeader = req.headers.token;
-        conlog.log(authHeader);
         
         
     }catch (error) {
-        res.status(400).send("Invalid token");
+        res.status(400).json(error);
     }
+    next();
 }
 
 module.exports = authToken;
