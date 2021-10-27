@@ -23,25 +23,30 @@ function SignIn({ className }) {
     });
     localStorage.setItem(`token`, JSON.stringify(res.data.token));
     localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
-    history.push("/home"); 
+    history.push("/home");
   };
 
   const onClickSignIn = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:8080/auth/sign-in", {
-      email: email,
-      password: password
-    })
-    .then((response) => {
-      history.push('/home')
-    })
+    axios
+      .post("http://localhost:8080/auth/sign-in", {
+        email: email,
+        password: password,
+      })
+      .then((response) => {
+        localStorage.setItem(`tokenSignin`, JSON.stringify(response.data));
+        // localStorage.setItem(`email`, JSON.stringify(response.data));
+        // console.log(response.data);
+        history.push("/home");
+      }).catch ((error) => {
+        console.log(error.response);
+      });
   };
-
 
   useEffect(() => {
     axios.get("http://localhost:8080/auth/sign-in").then((response) => {
       console.log(response);
-    })
+    });
   }, []);
 
   return (
@@ -57,18 +62,30 @@ function SignIn({ className }) {
                   </div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                      <Form.Control type="email" placeholder="Enter email" onChange={(event) => setEmail(event.target.value)} />
+                      <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        onChange={(event) => setEmail(event.target.value)}
+                      />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                      <Form.Control type="password" placeholder="Password" onChange={(event) => setPassword(event.target.value)} />
+                      <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        onChange={(event) => setPassword(event.target.value)}
+                      />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={onClickSignIn}>
+                    <Button
+                      variant="primary"
+                      type="submit"
+                      onClick={onClickSignIn}
+                    >
                       SignIn
                     </Button>
                     <Link to="/sign-up">
-                    <Button variant="primary" type="submit">
-                      SignUp
-                    </Button>
+                      <Button variant="primary" type="submit">
+                        SignUp
+                      </Button>
                     </Link>
                     <ReactFacebookLogin
                       appId="1006115476601013"
@@ -86,12 +103,6 @@ function SignIn({ className }) {
           </div>
         </div>
       </div>
-      {/* <ReactFacebookLogin
-        appId="1006115476601013"
-        fields="name,email,picture" //เอาอะไรมาจากfacebookบ้าง
-        scope="public_profile, email"
-        callback={responseFacebook}
-      /> */}
     </>
   );
 }

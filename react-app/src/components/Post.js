@@ -9,12 +9,12 @@ function Post({ className }) {
 
   useEffect(() => {
     async function getPost() {
-      const posts = await axios.get("http://localhost:8080/profile/post");
+      const posts = await axios.get("http://localhost:8080/timeline/post");
       setPost(posts.data);
     }
     getPost();
   }, []);
-  
+
   return (
     <div className={className}>
       <div className="post_header">

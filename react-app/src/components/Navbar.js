@@ -1,19 +1,14 @@
 import React from "react";
 import "../styles/Navbar.css";
 import Fab from "@mui/material/Fab";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
-    const history = useHistory();
-
-    const logout = (event) => {
-        event.preventDefault();
-        localStorage.removeItem("token");
-        localStorage.removeItem("name");
-        history.push("/sign-up");
-    }
+  const logout = () => {
+    localStorage.removeItem("tokenSignin");
+  };
 
   return (
     <div className="navbar_header">
@@ -40,9 +35,11 @@ function Navbar() {
         </Fab> */}
 
         <Fab variant="extended" size="small" color="secondary">
-          <LockOpenOutlinedIcon fontSize="small" onClick={logout} /> Logout
+          <NavLink to="/" onClick={logout}>
+            <LockOpenOutlinedIcon fontSize="small" />
+            Logout
+          </NavLink>
         </Fab>
-
       </div>
     </div>
   );

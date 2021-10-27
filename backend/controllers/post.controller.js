@@ -1,4 +1,6 @@
 const post = require("../models/post");
+const feed = require("../models/feed");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
     post: async (req, res, next) => {
@@ -33,6 +35,13 @@ module.exports = {
 
         } catch (error) {
             res.status(500).json("Something wrong!");
+        }
+    },
+    getFeed: async (req, res, next) => {
+        try {
+            res.status(200).json(await feed.find());
+        } catch (error) {
+            res.status(400).json("Not found!");
         }
     }
 };

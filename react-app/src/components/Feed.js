@@ -25,7 +25,7 @@ function Feed({ className }) {
             <Row>
               {catimg.map((value) => {
                 return <FeedImage key={value.id} item={value} />
-              })};
+              })}
             </Row>
           </Container>
         </div>

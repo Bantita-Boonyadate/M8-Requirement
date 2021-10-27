@@ -10,7 +10,7 @@ function PostForm({ className }) {
 
     const onClickPost = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:8080/profile/post", {
+        axios.post("http://localhost:8080/timeline/post", {
             imageURL: imageURL,
             caption: caption
           })
