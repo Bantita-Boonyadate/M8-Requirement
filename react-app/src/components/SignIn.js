@@ -20,10 +20,18 @@ function SignIn({ className }) {
       method: "post",
       url: "http://localhost:8080/auth/sign-in/facebook",
       data: { user },
-    });
-    localStorage.setItem(`token`, JSON.stringify(res.data.token));
-    localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
-    history.push("/home");
+    })
+    .then((res) => {
+      // localStorage.setItem(`token`, JSON.stringify(res.data.token));
+      localStorage.setItem(`token`, res.data.token);
+      history.push("/home");
+    }).catch ((error) => {
+      console.log(error);
+    })
+    // localStorage.setItem(`token`, JSON.stringify(res.data.token));
+    // localStorage.setItem(`token`, res.data);
+    // localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
+    // history.push("/home");
   };
 
   const onClickSignIn = (event) => {
@@ -35,9 +43,10 @@ function SignIn({ className }) {
       })
       .then((response) => {
         localStorage.setItem(`token`, response.data);
-        
+
         history.push("/home");
-      }).catch ((error) => {
+      })
+      .catch((error) => {
         console.log(error.response);
       });
   };
@@ -77,21 +86,24 @@ function SignIn({ className }) {
                     <Button
                       variant="primary"
                       type="submit"
+                      className="btn-signin"
                       onClick={onClickSignIn}
                     >
                       SignIn
                     </Button>
                     <Link to="/sign-up">
-                      <Button variant="primary" type="submit">
+                      <Button variant="primary" type="submit" className="btn-signup">
                         SignUp
                       </Button>
                     </Link>
-                    <ReactFacebookLogin
-                      appId="1006115476601013"
-                      fields="name,email,picture" //เอาอะไรมาจากfacebookบ้าง
-                      scope="public_profile, email"
-                      callback={responseFacebook}
-                    />
+                    <div className="btn-facebook">
+                      <ReactFacebookLogin
+                        appId="1006115476601013"
+                        fields="name,email,picture" //เอาอะไรมาจากfacebookบ้าง
+                        scope="public_profile, email"
+                        callback={responseFacebook}
+                      />
+                    </div>
                   </Form>
                 </Col>
                 <Col lg={8} md={6} sm={12}>
@@ -129,5 +141,14 @@ export default styled(SignIn)`
     color: #fff;
     background-color: #813afe;
     border-color: #813afe;
+  }
+  .btn-signin {
+    margin-right: 10px;
+  }
+  .btn-facebook {
+    margin-top: 15px;
+  }
+  .kep-login-facebook.metro {
+    border-radius: 5px;
   }
 `;

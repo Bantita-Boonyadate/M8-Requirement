@@ -49,7 +49,6 @@ export default styled(Feed)`
     background-color: white;
     margin: 20px auto 20px auto;
     border: 1px solid lightgray;
-    background-color: lightsalmon;
     /* width: 100%; */
   }
   .post_boxImg {

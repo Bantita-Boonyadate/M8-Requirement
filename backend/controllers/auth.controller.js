@@ -3,7 +3,7 @@ const userForm = require("../models/userForm");
 const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
-const authTokenMiddleware = require("../middlewares/authToken");
+// const authTokenMiddleware = require("../middlewares/authToken");
 
 module.exports = {
   facebook: async (req, res, next) => {

@@ -12,3 +12,7 @@
 .btn-postform {
   text-decoration: none;
 }
+#root > div.navbar_header > div > button > a {
+  color: white;
+  text-decoration: none;
+}
