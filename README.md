@@ -29,9 +29,20 @@
   
   4. Open the application in the browser using http://localhost:3000
   
-  ### Backend
+ ### Backend
   
-  ภาษาที่ใช้คือ Node js
+ ภาษาที่ใช้คือ Node js
   
+ การจัดเตรียมระบบ
+
+   1. Set up a new or existing npm package
+   ``` bash
+   npm init
+   ```
+   
+   2. Install dependencies
+   ``` bash
+   npm install 
+   ```
   
 
