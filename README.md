@@ -11,6 +11,7 @@ It's a website for pet lovers who want to share their pet's photos and stories t
 * View map
 
 ## Screenshots
+![m8-project](https://user-images.githubusercontent.com/84013481/139471316-80d6ba6e-ce52-423e-9300-b43665fb9428.jpg)
 
 ## Developed with
 * React
@@ -50,7 +51,7 @@ https://github.com/Bantita-Boonyadate/M8-Requirement.git
   * Open the application in the browser using http://localhost:3000
 
 * Backend
-  * Install dependecies
+  * Install dependencies
   ```
   npm install
   ```
