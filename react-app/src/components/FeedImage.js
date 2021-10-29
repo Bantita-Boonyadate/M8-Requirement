@@ -7,7 +7,6 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import Comments from "./Comments";
 import { Col, Card } from "react-bootstrap";
 
@@ -40,20 +39,7 @@ function FeedImage({ item }) {
       <div className="post_comments">
         <Comments />
       </div>
-      <div className="post_boxform">
-        <form className="post_form">
-          <TextField
-            label="add comment"
-            size="small"
-            variant="outlined"
-            className="post_input"
-            placeholder="add comment"
-          />
-          <Button variant="contained" size="small" endIcon={<SendIcon />}>
-            Send
-          </Button>
-        </form>
-      </div>
+      
       </Card>
     </Col>
   );
