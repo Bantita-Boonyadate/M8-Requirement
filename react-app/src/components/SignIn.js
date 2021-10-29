@@ -21,13 +21,17 @@ function SignIn({ className }) {
       url: "http://localhost:8080/auth/sign-in/facebook",
       data: { user },
     })
-    .then((res) => {
-      // localStorage.setItem(`token`, JSON.stringify(res.data.token));
-      localStorage.setItem(`token`, res.data.token);
-      history.push("/home");
-    }).catch ((error) => {
-      console.log(error);
-    })
+      .then((res) => {
+        // localStorage.setItem(`token`, JSON.stringify(res.data.token));
+        // localStorage.setItem(`name`, JSON.stringify(res.data.name));
+        localStorage.setItem(`token`, res.data.token);
+        console.log(localStorage.token); //ออกเหมือนกับในsigninธรรมดาเลย แต่เปนภาษาต่างดาวไม่มี""
+
+        history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     // localStorage.setItem(`token`, JSON.stringify(res.data.token));
     // localStorage.setItem(`token`, res.data);
     // localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
@@ -43,6 +47,9 @@ function SignIn({ className }) {
       })
       .then((response) => {
         localStorage.setItem(`token`, response.data);
+        // localStorage.setItem(`token`, JSON.stringify(response.data.token));
+        // localStorage.setItem(`name`, JSON.stringify(response.data.name));
+        console.log(localStorage.token);
 
         history.push("/home");
       })
@@ -66,7 +73,7 @@ function SignIn({ className }) {
               <Row>
                 <Col lg={4} md={6} sm={12} className="text-center mt-2 p-3">
                   <div>
-                    <h3>Sign In</h3>
+                    <h2 className="text-signin">Sign In</h2>
                   </div>
                   <Form>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -91,11 +98,15 @@ function SignIn({ className }) {
                     >
                       SignIn
                     </Button>
-                    <Link to="/sign-up">
-                      <Button variant="primary" type="submit" className="btn-signup">
+                    {/* <Link to="/sign-up">
+                      <Button
+                        variant="primary"
+                        type="submit"
+                        className="btn-signup"
+                      >
                         SignUp
                       </Button>
-                    </Link>
+                    </Link> */}
                     <div className="btn-facebook">
                       <ReactFacebookLogin
                         appId="1006115476601013"
@@ -104,10 +115,11 @@ function SignIn({ className }) {
                         callback={responseFacebook}
                       />
                     </div>
+                    <Link to="/sign-up" className="link-signup">Don't have account ?</Link>
                   </Form>
                 </Col>
                 <Col lg={8} md={6} sm={12}>
-                  <img className="w-100" src={loginImg} alt="login-img" />
+                  <img className="w-100 mt-4" src={loginImg} alt="login-img" />
                 </Col>
               </Row>
             </Container>
@@ -137,6 +149,9 @@ export default styled(SignIn)`
   .inner-box:hover {
     box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;
   }
+  .text-signin {
+    color: white;
+  }
   .btn-primary {
     color: #fff;
     background-color: #813afe;
@@ -144,11 +159,21 @@ export default styled(SignIn)`
   }
   .btn-signin {
     margin-right: 10px;
+    width: 100%;
   }
   .btn-facebook {
     margin-top: 15px;
+    margin-bottom: 15px;
   }
   .kep-login-facebook.metro {
     border-radius: 5px;
+  }
+  .link-signup {
+    color: gray;
+    text-decoration: none;
+    transition: 0.2s;
+  }
+  .link-signup:hover {
+    color: black;
   }
 `;

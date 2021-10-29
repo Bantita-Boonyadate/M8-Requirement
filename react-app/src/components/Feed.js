@@ -19,37 +19,45 @@ function Feed({ className }) {
 
   return (
     <div className={className}>
-      <div className="post">
+      
         <div className="post_header">
-          <Container>
-            <Row>
+          
+            <Row className="card-container">
               {catimg.map((value) => {
                 return <FeedImage key={value.id} item={value} />
               })}
             </Row>
-          </Container>
+          
         </div>
-      </div>
+      
     </div>
   );
 }
 
 export default styled(Feed)`
-  .post {
-    /* display: flex;
-    width: 50%;
-    background-color: white;
-    margin: 20px auto 20px auto;
-    border: 1px solid lightgray;
-    background-color: lightsalmon; */
-  }
   .post_header {
     display: flex;
     width: 50%;
     background-color: white;
     margin: 20px auto 20px auto;
-    border: 1px solid lightgray;
+    /* border: 1px solid lightgray; */
     /* width: 100%; */
+  }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .each-card {
+    transition: 0.5s;    
+    width: 100%;
+    box-shadow: 0 2px 8px 0 whitesmoke, 0 6px 10px 0 whitesmoke;
+    border: 1px solid lightgray;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .each-card:hover {
+   box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;
   }
   .post_boxImg {
     max-width: 100%;

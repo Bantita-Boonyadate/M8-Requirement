@@ -26,6 +26,7 @@ module.exports = {
           const token = jwt.sign({ _id: find._id }, "id_key_account", {
             expiresIn: "1d",
           });
+          console.log(token);
           const { _id, name, email } = find;
           res.status(200).json({ token, user: { _id, name, email } });
         } else {
@@ -66,6 +67,11 @@ module.exports = {
           console.log(error);
         } else {
           const token = await newUser.generateAuthenToken();
+          // const privateKey = fs.readFileSync(__dirname+'/../middlewares/private.key');
+
+          // const token = jwt.sign({ _id: data._id }, privateKey, {
+          //   expiresIn: "1d",
+          // });
           res.status(200).json(token);
           console.log(data);
         }
@@ -89,7 +95,12 @@ module.exports = {
         //Shows token of user information
         // const { password, ...others } = user._doc;
         const token = await user.generateAuthenToken();
-        console.log(token);
+
+        // const privateKey = fs.readFileSync(__dirname+'/../middlewares/private.key');
+
+        // const token = jwt.sign({ _id: data._id }, privateKey, {
+        //   expiresIn: "1d",
+        // });
         // res.send(token);
         res.status(200).json(token);
       } else {

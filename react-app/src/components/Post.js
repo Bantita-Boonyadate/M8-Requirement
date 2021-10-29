@@ -21,13 +21,13 @@ function Post({ className }) {
   return (
     <div className={className}>
       <div className="post_header">
-        <Container>
-          <Row>
+        
+          <Row className="card-container">
             {post.map((value) => {
               return <PostFetchData key={value._id} item={value} />;
             })}
           </Row>
-        </Container>
+        
       </div>
     </div>
   );

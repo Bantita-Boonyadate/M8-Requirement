@@ -33,6 +33,7 @@ function App() {
         <SignUp />
       </Route>
       <Route path="/map">
+        <Navbar />
         <Map />
       </Route>
       <Route path="/">
