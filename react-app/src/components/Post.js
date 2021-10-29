@@ -6,7 +6,7 @@ import PostFetchData from "./PostFetchData";
 
 function Post({ className }) {
   const [post, setPost] = useState([]);
-  const token = useState(localStorage.getItem(`token`))[0];
+  const [token] = React.useState(JSON.parse(localStorage.getItem("token")));
 
   useEffect(() => {
     async function getPost() {

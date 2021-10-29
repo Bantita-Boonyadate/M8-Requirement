@@ -8,11 +8,15 @@ function PostForm({ className }) {
     const [imageURL, setImageURL] = useState("");
     const [caption, setCaption] = useState("");
 
+    const token = useState(localStorage.getItem(`token`))[0];
+
     const onClickPost = (event) => {
         event.preventDefault();
         axios.post("http://localhost:8080/timeline/post", {
             imageURL: imageURL,
             caption: caption
+          },{
+            headers: { Authorization: `Bearer ${token}`}
           })
           .then((response) => {
             history.push('/Timeline');

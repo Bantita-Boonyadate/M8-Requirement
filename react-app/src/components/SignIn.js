@@ -22,20 +22,14 @@ function SignIn({ className }) {
       data: { user },
     })
       .then((res) => {
-        // localStorage.setItem(`token`, JSON.stringify(res.data.token));
-        // localStorage.setItem(`name`, JSON.stringify(res.data.name));
-        localStorage.setItem(`token`, res.data.token);
-        console.log(localStorage.token); //ออกเหมือนกับในsigninธรรมดาเลย แต่เปนภาษาต่างดาวไม่มี""
-
+        localStorage.setItem(`token`, JSON.stringify(res.data.token));
+        localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
+        console.log(res)
         history.push("/home");
       })
       .catch((error) => {
         console.log(error);
       });
-    // localStorage.setItem(`token`, JSON.stringify(res.data.token));
-    // localStorage.setItem(`token`, res.data);
-    // localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
-    // history.push("/home");
   };
 
   const onClickSignIn = (event) => {
@@ -46,10 +40,10 @@ function SignIn({ className }) {
         password: password,
       })
       .then((response) => {
-        localStorage.setItem(`token`, response.data);
-        // localStorage.setItem(`token`, JSON.stringify(response.data.token));
-        // localStorage.setItem(`name`, JSON.stringify(response.data.name));
-        console.log(localStorage.token);
+        // localStorage.setItem(`token`, response.data);
+        localStorage.setItem(`token`, JSON.stringify(response.data.token));
+        localStorage.setItem(`name`, JSON.stringify(response.data.user));
+      
 
         history.push("/home");
       })
@@ -98,15 +92,6 @@ function SignIn({ className }) {
                     >
                       SignIn
                     </Button>
-                    {/* <Link to="/sign-up">
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        className="btn-signup"
-                      >
-                        SignUp
-                      </Button>
-                    </Link> */}
                     <div className="btn-facebook">
                       <ReactFacebookLogin
                         appId="1006115476601013"

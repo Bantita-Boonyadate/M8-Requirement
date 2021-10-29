@@ -23,7 +23,7 @@ module.exports = {
       if (Auth) {
         let find = await user.findOne({ email });
         if (find) {
-          const token = jwt.sign({ _id: find._id }, "id_key_account", {
+          const token = jwt.sign({ _id: find._id }, "secretkey", {
             expiresIn: "1d",
           });
           console.log(token);
@@ -42,7 +42,7 @@ module.exports = {
                 .status(400)
                 .json({ error: "Something went wrong..." });
             }
-            const token = jwt.sign({ _id: data._id }, "id_key_account", {
+            const token = jwt.sign({ _id: data._id }, "secretkey", {
               expiresIn: "1d",
             });
             const { _id, name, email } = users;
@@ -102,7 +102,8 @@ module.exports = {
         //   expiresIn: "1d",
         // });
         // res.send(token);
-        res.status(200).json(token);
+
+        res.status(200).json({token, user: user.name});
       } else {
         res.status(400).json("Incorrect password!");
       }

@@ -36,20 +36,6 @@ function PostFetchData({ item }) {
       <div className="post_comments">
         <Comments />
       </div>
-      <div className="post_boxform">
-        <form className="post_form">
-          <TextField
-            label="add comment"
-            size="small"
-            variant="outlined"
-            className="post_input"
-            placeholder="add comment"
-          />
-          <Button variant="contained" size="small" endIcon={<SendIcon />}>
-            Send
-          </Button>
-        </form>
-      </div>
     </Col>
   );
 }

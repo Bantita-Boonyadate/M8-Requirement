@@ -9,6 +9,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 function Navbar({ className }) {
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
   };
 
   return (
