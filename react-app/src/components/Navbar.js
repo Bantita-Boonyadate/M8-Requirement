@@ -75,7 +75,7 @@ export default styled(Navbar)`
   .btn-logout {
     text-decoration: none;
   }
-  @media only screen and (min-width: 425px) {
   
-}
+  
+
 `;

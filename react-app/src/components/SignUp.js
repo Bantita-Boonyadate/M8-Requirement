@@ -186,6 +186,5 @@ export default styled(Signup)`
   .link-signin:hover {
     color: black;
   }
-
   
 `;

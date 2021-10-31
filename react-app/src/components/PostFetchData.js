@@ -3,17 +3,16 @@ import {
   ListItem,
   ListItemText,
   ListItemAvatar,
-  Avatar,
-  TextField,
-  Button,
+  Avatar
 } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-import Comments from "./Comments";
-import { Col } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 
 function PostFetchData({ item }) {
+  const [name] = React.useState(JSON.parse(localStorage.getItem("name")));
+
   return (
     <Col className="post_body" md={12} sm={12}>
+      <Card className="each-card">
       <ListItem>
         <ListItemAvatar>
           <Avatar
@@ -22,20 +21,18 @@ function PostFetchData({ item }) {
             alt="User"
           />
         </ListItemAvatar>
-        <ListItemText primary="username" secondary="Chiang Mai, Thailand" />
+        <ListItemText primary={`${name}`} secondary="Chiang Mai, Thailand" />
       </ListItem>
       <div className="post_boxImg">
         <img className="post_image" src={item.imageURL} alt="Post pic" />
       </div>
       <div className="post_boxtext">
         <h5 className="post_text">
-          <strong>username: </strong>
+          <label>{`${name}`}: </label>
           {item.caption}
         </h5>
       </div>
-      <div className="post_comments">
-        <Comments />
-      </div>
+      </Card>
     </Col>
   );
 }

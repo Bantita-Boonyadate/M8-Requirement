@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import styled from "styled-components";
 import axios from "axios";
 import FeedImage from "./FeedImage";
@@ -19,17 +19,13 @@ function Feed({ className }) {
 
   return (
     <div className={className}>
-      
-        <div className="post_header">
-          
-            <Row className="card-container">
-              {catimg.map((value) => {
-                return <FeedImage key={value.id} item={value} />
-              })}
-            </Row>
-          
-        </div>
-      
+      <div className="post_header">
+        <Row className="card-container">
+          {catimg.map((value) => {
+            return <FeedImage key={value.id} item={value} />;
+          })}
+        </Row>
+      </div>
     </div>
   );
 }
@@ -49,7 +45,7 @@ export default styled(Feed)`
     align-items: stretch;
   }
   .each-card {
-    transition: 0.5s;    
+    transition: 0.5s;
     width: 100%;
     box-shadow: 0 2px 8px 0 whitesmoke, 0 6px 10px 0 whitesmoke;
     border: 1px solid lightgray;
@@ -57,7 +53,7 @@ export default styled(Feed)`
     margin-bottom: 20px;
   }
   .each-card:hover {
-   box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;
+    box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;
   }
   .post_boxImg {
     max-width: 100%;
@@ -69,16 +65,6 @@ export default styled(Feed)`
     display: flex;
   }
   .post_text {
-    margin: 20px 0px 20px 0px;
-  }
-  .post_boxform {
-    margin-bottom: 15px;
-  }
-  .post_form {
-    display: flex;
-    margin-top: 20px;
-  }
-  .post_input {
-    flex: 1;
+    margin: 20px 15px 20px 15px;
   }
 `;
