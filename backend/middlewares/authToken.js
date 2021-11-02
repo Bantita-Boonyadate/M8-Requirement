@@ -8,8 +8,6 @@ const authToken = async (req, res, next) => {
         const user = jwt.verify(authHeader, process.env.JWTPRIVATEKEY);
         console.log(user);
         if (user) {
-            // req.user = user;
-            // console.log(user);
             try {
                 const checkUserFacebook = await userFacebook.findById(user._id);
                 
@@ -27,9 +25,6 @@ const authToken = async (req, res, next) => {
                 res.status(400).json("Not found!")
             }
         }
-        // console.log(authHeader);
-        
-        
         
     }catch (error) {
         res.status(400).json(error);

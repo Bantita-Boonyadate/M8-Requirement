@@ -8,17 +8,17 @@ const jwt = require("jsonwebtoken");
 module.exports = {
   facebook: async (req, res, next) => {
     try {
-      const email = req.body.user.email;
+      const email = req.body.user.email; //รับมาจากหน้าบ้าน
       const response = await axios({
         method: "post",
         url: `https://graph.facebook.com/v6.0/oauth/access_token?grant_type=fb_exchange_token&client_id=1006115476601013
                 &client_secret=c7e2daa99cb63bb60df1e37029459f9f&fb_exchange_token=${req.body.user.accessToken}`,
       });
-      const result = response.data;
+      const result = response.data; //ได้tokenมาจาก บรรทัด15
       const Auth = await axios({
         method: "get",
         url: `https://graph.facebook.com/me?access_token=${result.access_token}`,
-      });
+      }); //ส่งข้อมูลกลับมาให้หลังจากได้access token
 
       if (Auth) {
         let find = await user.findOne({ email });
@@ -28,13 +28,13 @@ module.exports = {
           });
           console.log(token);
           const { _id, name, email } = find;
-          res.status(200).json({ token, user: { _id, name, email } });
+          res.status(200).json({ token, user: { _id, name, email } }); //ส่งtokenกลับไป
         } else {
           let users = new user({
             name: Auth.data.name,
             email,
             type_account: "Facebook",
-          });
+          }); //user facebook คนใหม่
           console.log(users);
           await users.save(async (err, data) => {
             if (err) {
@@ -50,8 +50,11 @@ module.exports = {
           });
         }
       } else {
+        res.status(500).json("Error");
       }
-    } catch (error) {}
+    } catch (error) {
+      res.status(500).json("Error");
+    }
   },
   signup: async (req, res, next) => {
     try {
@@ -67,12 +70,7 @@ module.exports = {
           console.log(error);
         } else {
           const token = await newUser.generateAuthenToken();
-          // const privateKey = fs.readFileSync(__dirname+'/../middlewares/private.key');
-
-          // const token = jwt.sign({ _id: data._id }, privateKey, {
-          //   expiresIn: "1d",
-          // });
-          res.status(200).json(token);
+          res.status(200).json({token, user: name});
           console.log(data);
         }
       });
@@ -90,18 +88,9 @@ module.exports = {
       }
       //Password is correct
       const password = req.body.password;
-      const checkPassword = await bcrypt.compareSync(password, user.password);
+      const checkPassword = await bcrypt.compareSync(password, user.password); //การป้องกันpassword
       if (checkPassword) {
-        //Shows token of user information
-        // const { password, ...others } = user._doc;
         const token = await user.generateAuthenToken();
-
-        // const privateKey = fs.readFileSync(__dirname+'/../middlewares/private.key');
-
-        // const token = jwt.sign({ _id: data._id }, privateKey, {
-        //   expiresIn: "1d",
-        // });
-        // res.send(token);
 
         res.status(200).json({token, user: user.name});
       } else {

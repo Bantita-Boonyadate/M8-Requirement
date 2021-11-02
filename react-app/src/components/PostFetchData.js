@@ -27,10 +27,9 @@ function PostFetchData({ item }) {
         <img className="post_image" src={item.imageURL} alt="Post pic" />
       </div>
       <div className="post_boxtext">
-        <h5 className="post_text">
-          <label>{`${name}`}: </label>
-          {item.caption}
-        </h5>
+        <label className="post_text">
+          <label>{`${name}`}: {item.caption}</label>
+        </label>
       </div>
       </Card>
     </Col>

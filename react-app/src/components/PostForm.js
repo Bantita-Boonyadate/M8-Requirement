@@ -8,7 +8,8 @@ function PostForm({ className }) {
     const [imageURL, setImageURL] = useState("");
     const [caption, setCaption] = useState("");
 
-    const token = useState(localStorage.getItem(`token`))[0];
+    // const token = useState(localStorage.getItem(`token`))[0];
+    const [token] = React.useState(JSON.parse(localStorage.getItem("token")));
 
     const onClickPost = (event) => {
         event.preventDefault();

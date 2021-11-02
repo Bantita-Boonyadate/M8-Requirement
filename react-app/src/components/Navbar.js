@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { NavLink } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
+import PersonIcon from '@mui/icons-material/Person';
 
 function Navbar({ className }) {
   const logout = () => {
@@ -34,6 +35,12 @@ function Navbar({ className }) {
           <NavLink to="/map" className="btn-place">
             <Fab variant="extended" size="small" color="secondary">
               <PlaceIcon />
+            </Fab>
+          </NavLink>
+
+          <NavLink to="/profile" className="btn-profile">
+            <Fab variant="extended" size="small" color="secondary">
+              <PersonIcon />
             </Fab>
           </NavLink>
 
@@ -69,6 +76,10 @@ export default styled(Navbar)`
     text-decoration: none;
   }
   .btn-place {
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  .btn-profile {
     margin-right: 10px;
     text-decoration: none;
   }

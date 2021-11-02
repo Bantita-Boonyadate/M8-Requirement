@@ -1,10 +1,5 @@
 import React from "react";
 import "./App.css";
-// import Fab from "@mui/material/Fab";
-// import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-// import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
-// import Modal from '@mui/material/Modal';
-// import Post from "./components/Post";
 import { Switch, Route } from "react-router";
 import Home from "./components/Home";
 import SignIn from "./components/SignIn";
@@ -13,6 +8,7 @@ import SignUp from "./components/SignUp";
 import PostForm from "./components/PostForm";
 import Timeline from "./components/Timeline";
 import Map from "./components/Map";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -35,6 +31,10 @@ function App() {
       <Route path="/map">
         <Navbar />
         <Map />
+      </Route>
+      <Route path="/profile">
+        <Navbar />
+        <Profile />
       </Route>
       <Route path="/">
         <SignIn />

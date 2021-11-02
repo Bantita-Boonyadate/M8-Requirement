@@ -28,7 +28,7 @@ export class LongdoMap extends Component {
       script.id = 'longdoMapScript';
       document.body.appendChild(script);
 
-      script.onload = () => {
+      script.onload = () => { //ตอนโปรแกรมเปิด
         this.mapCallback();
         if (callback) callback();
       };

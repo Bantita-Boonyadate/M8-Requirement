@@ -14,16 +14,15 @@ function FeedImage({ item }) {
               alt="User"
             />
           </ListItemAvatar>
-          <ListItemText primary="username" secondary="Chiang Mai, Thailand" />
+          <ListItemText primary="Catplanet" />
         </ListItem>
         <div className="post_boxImg">
           <img className="post_image" src={item.url} alt="Post pic" />
         </div>
         <div className="post_boxtext">
-          <h5 className="post_text">
-            <label>username: </label>
-            caption
-          </h5>
+          <label className="post_text">
+            <label>Catplanet: Cat</label>
+          </label>
         </div>
       </Card>
     </Col>

@@ -34,10 +34,7 @@ export default styled(Feed)`
   .post_header {
     display: flex;
     width: 50%;
-    background-color: white;
     margin: 20px auto 20px auto;
-    /* border: 1px solid lightgray; */
-    /* width: 100%; */
   }
   .card-container {
     display: flex;
@@ -51,6 +48,7 @@ export default styled(Feed)`
     border: 1px solid lightgray;
     text-align: center;
     margin-bottom: 20px;
+    background-color: white;
   }
   .each-card:hover {
     box-shadow: 0 4px 8px 0 lightgray, 0 6px 20px 0 lightgray;

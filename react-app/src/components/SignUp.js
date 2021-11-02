@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
@@ -20,68 +20,24 @@ function Signup({ className }) {
         email: email,
       })
       .then((response) => {
-        localStorage.setItem(`token`, response.data);
+        localStorage.setItem(`token`, JSON.stringify(response.data.token));
+        localStorage.setItem(`name`, JSON.stringify(response.data.user));
         history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error.response);
       });
   };
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/sign-in").then((response) => {
-  //     if (response.data.loggedIn == true) {
-  //       setLoginStatus(response.data.user[0].username);
-  //     }
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get("http://localhost:8080/auth/sign-up").then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <>
       <div className={className}>
-        {/* <div className="container">
-            <h1>Sign Up</h1>
-  
-            <form id="create-form" className="createform">
-              <div className="input-group">
-               
-                <input
-                  name="name"
-                  type="text"
-                  id="name"
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="Name"
-                />
-              </div>
-  
-              <div className="input-group">
-               
-                <input
-                  name="email"
-                  type="email"
-                  id="email"
-                  onChange={(event) => setEmail(event.target.value)}
-                  placeholder="Email"
-                />
-              </div>
-  
-              <div className=" input-group">
-                
-                <input
-                  name="password"
-                  type="password"
-                  id="password"
-                  onChange={(event) => setPassword(event.target.value)}
-                  placeholder="Password"
-                />
-              </div>
-  
-              <div className="btnSignup">
-                <button onClick={addUser}>Sign Up</button>
-              </div>
-              
-  
-              <Link to="/sign-in" className="link-login">Already have account ?</Link>
-  
-            </form>
-          </div> */}
         <div className="box">
           <div className="inner-box">
             <Container className="mt-5 pb-5">
@@ -120,22 +76,17 @@ function Signup({ className }) {
                     >
                       SignUp
                     </Button>
-                    {/* <Link to="/sign-up">
-                      <Button
-                        variant="primary"
-                        type="submit"
-                        className="btn-signup"
-                      >
-                        SignUp
-                      </Button>
-                    </Link> */}
                     <Link to="/sign-in" className="link-signin">
                       Already have account ?
                     </Link>
                   </Form>
                 </Col>
                 <Col lg={8} md={6} sm={12}>
-                  <img className="w-100 mt-4 img-signup" src={loginImg} alt="login-img" />
+                  <img
+                    className="w-100 mt-4 img-signup"
+                    src={loginImg}
+                    alt="login-img"
+                  />
                 </Col>
               </Row>
             </Container>
@@ -186,5 +137,4 @@ export default styled(Signup)`
   .link-signin:hover {
     color: black;
   }
-  
 `;

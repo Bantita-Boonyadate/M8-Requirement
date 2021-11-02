@@ -24,7 +24,6 @@ function SignIn({ className }) {
       .then((res) => {
         localStorage.setItem(`token`, JSON.stringify(res.data.token));
         localStorage.setItem(`name`, JSON.stringify(res.data.user.name));
-        console.log(res)
         history.push("/home");
       })
       .catch((error) => {
@@ -94,7 +93,7 @@ function SignIn({ className }) {
                     </Button>
                     <div className="btn-facebook">
                       <ReactFacebookLogin
-                        appId="1006115476601013"
+                        appId="1006115476601013" //app id ใน facebook developer
                         fields="name,email,picture" //เอาอะไรมาจากfacebookบ้าง
                         scope="public_profile, email"
                         callback={responseFacebook}
