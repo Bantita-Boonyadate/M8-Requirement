@@ -17,7 +17,7 @@ function PostFetchData({ item }) {
         <ListItemAvatar>
           <Avatar
             className="post_avatar"
-            src="https://media.istockphoto.com/photos/dog-puppy-on-garden-picture-id1142412853?k=20&m=1142412853&s=170667a&w=0&h=NnF4qnVYIqZFdSn2fiUPhhQGdBmuARQ8FrPU1mEWm3o="
+            src="https://cdn.shopify.com/s/files/1/0272/4770/6214/articles/introducing-a-dog-to-a-cat-home.jpg?v=1593020063"
             alt="User"
           />
         </ListItemAvatar>

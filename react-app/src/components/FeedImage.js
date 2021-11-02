@@ -10,7 +10,7 @@ function FeedImage({ item }) {
           <ListItemAvatar>
             <Avatar
               className="post_avatar"
-              src="https://media.istockphoto.com/photos/dog-puppy-on-garden-picture-id1142412853?k=20&m=1142412853&s=170667a&w=0&h=NnF4qnVYIqZFdSn2fiUPhhQGdBmuARQ8FrPU1mEWm3o=" //ใช้api profile แบบrandom
+              src="https://wallpaperaccess.com/full/5284947.jpg"
               alt="User"
             />
           </ListItemAvatar>

@@ -3,7 +3,6 @@ const userForm = require("../models/userForm");
 const bcrypt = require("bcryptjs");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
-// const authTokenMiddleware = require("../middlewares/authToken");
 
 module.exports = {
   facebook: async (req, res, next) => {
@@ -26,7 +25,6 @@ module.exports = {
           const token = jwt.sign({ _id: find._id }, "secretkey", {
             expiresIn: "1d",
           });
-          console.log(token);
           const { _id, name, email } = find;
           res.status(200).json({ token, user: { _id, name, email } }); //ส่งtokenกลับไป
         } else {
@@ -35,7 +33,6 @@ module.exports = {
             email,
             type_account: "Facebook",
           }); //user facebook คนใหม่
-          console.log(users);
           await users.save(async (err, data) => {
             if (err) {
               return users
@@ -67,15 +64,12 @@ module.exports = {
       await newUser.save(async (error, data) => {
         if (error) {
           res.status(400).json("Username that other user has already exist!");
-          console.log(error);
         } else {
           const token = await newUser.generateAuthenToken();
           res.status(200).json({token, user: name});
-          console.log(data);
         }
       });
     } catch (error) {
-      console.log(error);
       res.status(400).send("Error");
     }
   },

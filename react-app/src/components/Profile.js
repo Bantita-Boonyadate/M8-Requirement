@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import styled from "styled-components";
 import axios from "axios";
-import { ListItemText, ListItemAvatar, Avatar } from "@mui/material";
+import { ListItemAvatar, Avatar } from "@mui/material";
 import ProfileFetchData from "./ProfileFetchData";
 
 function Profile({ className }) {
@@ -40,18 +40,6 @@ function Profile({ className }) {
               </div>
             </Col>
           </Row>
-          {/* <ListItem>
-            <ListItemAvatar>
-              <Avatar
-                className="post_avatar"
-                src="https://media.istockphoto.com/photos/dog-puppy-on-garden-picture-id1142412853?k=20&m=1142412853&s=170667a&w=0&h=NnF4qnVYIqZFdSn2fiUPhhQGdBmuARQ8FrPU1mEWm3o="
-                alt="User"
-              />
-            </ListItemAvatar>
-            <div className="profile-text">
-              <ListItemText primary={`${name}`} />
-            </div>
-          </ListItem> */}
         </div>
 
         <Row className="card-container">

@@ -11,14 +11,11 @@ module.exports = {
             await newPost.save(async (error, data) => {
                 if(error) {
                     res.status(400).json("Something wrong!");
-                    console.log(error);
                 } else {
                     res.status(200).json({ success: true, data: data });
-                    console.log(data);
                 }
             })
         } catch (error) {
-            console.log(error);
             res.status(500).json("Something wrong!");
         }
     },

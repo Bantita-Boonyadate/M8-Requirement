@@ -39,7 +39,6 @@ function SignIn({ className }) {
         password: password,
       })
       .then((response) => {
-        // localStorage.setItem(`token`, response.data);
         localStorage.setItem(`token`, JSON.stringify(response.data.token));
         localStorage.setItem(`name`, JSON.stringify(response.data.user));
       

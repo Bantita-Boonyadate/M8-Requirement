@@ -8,7 +8,6 @@ function PostForm({ className }) {
     const [imageURL, setImageURL] = useState("");
     const [caption, setCaption] = useState("");
 
-    // const token = useState(localStorage.getItem(`token`))[0];
     const [token] = React.useState(JSON.parse(localStorage.getItem("token")));
 
     const onClickPost = (event) => {
@@ -69,7 +68,7 @@ export default styled(PostForm)`
   .container {
     background-color: white;
     width: 380px;
-    height: 450px;
+    height: 420px;
     padding: 30px;
     margin: 0 auto;
     border-radius: 20px;
@@ -112,7 +111,7 @@ export default styled(PostForm)`
   button {
     width: 100%;
     transition: 0.3s;
-    margin-top: 30px;
+    margin-top: 40px;
   }
   button:hover {
     box-shadow: 0 2px 4px 0 lightgray, 0 3px 10px 0 lightgray;

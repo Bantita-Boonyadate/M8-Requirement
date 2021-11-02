@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { NavLink } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 
 function Navbar({ className }) {
   const logout = () => {
@@ -27,19 +27,19 @@ function Navbar({ className }) {
 
         <div className="navbar_icon">
           <NavLink to="/post-form" className="btn-postform">
-            <Fab variant="extended" size="small" color="primary">
+            <Fab variant="extended" size="small">
               <AddIcon fontSize="medium" />
             </Fab>
           </NavLink>
 
           <NavLink to="/map" className="btn-place">
-            <Fab variant="extended" size="small" color="secondary">
+            <Fab variant="extended" size="small">
               <PlaceIcon />
             </Fab>
           </NavLink>
 
           <NavLink to="/profile" className="btn-profile">
-            <Fab variant="extended" size="small" color="secondary">
+            <Fab variant="extended" size="small">
               <PersonIcon />
             </Fab>
           </NavLink>
@@ -52,7 +52,6 @@ function Navbar({ className }) {
           </NavLink>
         </div>
       </div>
-      
     </div>
   );
 }
@@ -86,7 +85,5 @@ export default styled(Navbar)`
   .btn-logout {
     text-decoration: none;
   }
-  
-  
 
 `;
